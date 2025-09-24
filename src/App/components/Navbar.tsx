@@ -2,13 +2,14 @@ import { Link } from "react-router-dom"
 import ItemServices from "./dropdownmenu/itemServices"
 import { body,isActiveItem } from "../conststring/Tailwind"
 import React from "react";
+import Home from "../../pages/home"
 export default function Navbar() {
   const [activeItem, setActiveItem] = React.useState("Home");
   return (
     <div className={body}>
       <button className=" font-bold px-4 py-4 rounded-full border border-gray-300 active:scale-95">Medora</button>
       <div className="flex gap-10 px-10 py-2 items-center rounded-full border border-gray-300 ">
-          <Link to="/home" className={` ${activeItem === "Home" ? isActiveItem : ""} `} onClick={() => setActiveItem("Home")}>Home</Link>
+          <Link to="/pages/home" className={` ${activeItem === "Home" ? isActiveItem : ""} `} onClick={() => setActiveItem("Home")}>Home</Link>
            <ItemServices />
           <Link to="/about" className={` ${activeItem === "About" ? isActiveItem : ""}`} onClick={() => setActiveItem("About")}>About US</Link>
           <Link to="/products" className={` ${activeItem === "Products" ? isActiveItem : ""}`} onClick={() => setActiveItem("Products")}>Products</Link>

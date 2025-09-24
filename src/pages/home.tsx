@@ -1,7 +1,6 @@
-
-export default function MainHero() {
-    return (
-        <div className="flex flex-row-2 justify-between items-center mx-20">
+function Home() {
+    return(
+         <div className="flex flex-row-2 justify-between items-center mx-20">
             
             <div className="mx-20 w-1/2">
                 <button className=" border border-gray-300  my-10 rounded-full text-white px-4 py-2 active:scale-95 ">
@@ -22,7 +21,7 @@ export default function MainHero() {
             </div>
             <div className="flex items-end flex-col w-1/2  relative">
             <div className="absolute  ">
-                <img src="/public/IMG/bacsi.png" alt="bac si" className="w-3/4 object-cover opacity-50" />
+                <img src="/IMG/bacsi.png" alt="bac si" className="w-3/4 object-cover opacity-50" />
             </div>
                 <div className="w-60 h-52 border border-gray-300 rounded-3xl   shadow-lg ">
                     <h4 className="mx-5">Dashboard</h4>
@@ -34,5 +33,7 @@ export default function MainHero() {
                 </div>
             </div>
         </div>
-    )   
+    )
 }
+
+export default Home
