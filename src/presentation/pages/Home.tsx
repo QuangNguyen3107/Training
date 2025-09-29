@@ -1,4 +1,4 @@
-function Home() {
+export function Home() {
     return(
          <div className="flex flex-row-2 justify-between items-center mx-20">
             
@@ -35,5 +35,3 @@ function Home() {
         </div>
     )
 }
-
-export default Home

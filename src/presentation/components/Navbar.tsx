@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom"
 import ItemServices from "./dropdownmenu/itemServices"
-import { body,isActiveItem } from "../conststring/Tailwind"
+import { body, isActiveItem, ROUTES } from "../../shared"
 import React from "react";
-import Home from "../../pages/home"
-export default function Navbar() {
+
+export function Navbar() {
   const [activeItem, setActiveItem] = React.useState("Home");
   return (
     <div className={body}>
       <button className=" font-bold px-4 py-4 rounded-full border border-gray-300 active:scale-95">Medora</button>
       <div className="flex gap-10 px-10 py-2 items-center rounded-full border border-gray-300 ">
-          <Link to="/pages/home" className={` ${activeItem === "Home" ? isActiveItem : ""} `} onClick={() => setActiveItem("Home")}>Home</Link>
-           <ItemServices />
-          <Link to="/about" className={` ${activeItem === "About" ? isActiveItem : ""}`} onClick={() => setActiveItem("About")}>About US</Link>
-          <Link to="/products" className={` ${activeItem === "Products" ? isActiveItem : ""}`} onClick={() => setActiveItem("Products")}>Products</Link>
-          <Link to="/blog" className={` ${activeItem === "Blog" ? isActiveItem : ""}`} onClick={() => setActiveItem("Blog")}>Blog</Link>
-          <Link to="/careers" className={` ${activeItem === "Careers" ? isActiveItem : ""}`} onClick={() => setActiveItem("Careers")}>Careers</Link>
+          <Link to={ROUTES.HOME} className={` ${activeItem === "Home" ? isActiveItem : ""} `} onClick={() => setActiveItem("Home")}>Home</Link>
+           <ItemServices  className={` ${activeItem === "Services" || activeItem === "Consulting" || activeItem === "Development" || activeItem === "Design" ? isActiveItem : ""}`}
+            onServiceClick={() => setActiveItem("Services")} activeItem={activeItem} onServiceSelect={setActiveItem} />
+          <Link to={ROUTES.ABOUT} className={` ${activeItem === "About" ? isActiveItem : ""}`} onClick={() => setActiveItem("About")}>About US</Link>
+          <Link to={ROUTES.PRODUCTS} className={` ${activeItem === "Products" ? isActiveItem : ""}`} onClick={() => setActiveItem("Products")}>Products</Link>
+          <Link to={ROUTES.BLOG} className={` ${activeItem === "Blog" ? isActiveItem : ""}`} onClick={() => setActiveItem("Blog")}>Blog</Link>
+          <Link to={ROUTES.CAREERS} className={` ${activeItem === "Careers" ? isActiveItem : ""}`} onClick={() => setActiveItem("Careers")}>Careers</Link>
           <input type="text" className="border border-gray-300 rounded-full px-4 py-2" placeholder="Search..." />
           <button className="text-gray-700 font-bold px-2 py-2 rounded-full border border-gray-300 active:scale-95">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">

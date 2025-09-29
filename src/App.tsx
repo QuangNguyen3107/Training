@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Navbar from './App/components/Navbar'
-import Home from './pages/home'
+import { Navbar, Home, About, Products, Consulting} from './presentation'
+import { ROUTES } from './shared'
 function App() {
   return (
-    <div className="bg-linear-145 from-[#006666] via-[#006666]/80 to-green-100 min-h-screen">
-      <Navbar />
-      <Routes>
-        <Route path="/pages/home" element={<Home />} />
-        <Route path="/about" element={<div>About Page</div>} />
-        <Route path="/products" element={<div>Products Page</div>} />
-        <Route path="/blog" element={<div>Blog Page</div>} />
-        <Route path="/careers" element={<div>Careers Page</div>} />
-      </Routes>
-    </div>
+    <BrowserRouter>
+      <div className="bg-linear-145 from-[#006666] via-[#006666]/80 to-green-100 min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.ABOUT} element={<About />} />
+          <Route path={ROUTES.PRODUCTS} element={<Products />} />
+          <Route path={ROUTES.BLOG} element={<div>Blog Page</div>} />
+          <Route path={ROUTES.CAREERS} element={<div>Careers Page</div>} />
+          <Route path={ROUTES.SERVICES.CONSULTING} element={<Consulting />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
