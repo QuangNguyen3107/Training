@@ -1,11 +1,14 @@
+import container from "../../infrastructure/di/container";
+import type { Product } from "./Products";
 export function About() {
+  const productService = container.get<Product>('products');
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] px-20">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl font-bold text-white mb-8">
           About Medora
         </h1>
-        <p className="text-xl text-white mb-8 leading-relaxed">
+        <p className="text-xl text-white mb-8 leading-relaxed"> 
           Chào mừng bạn đến với Medora - đối tác tin cậy trong hành trình tài chính của bạn. 
           Chúng tôi cam kết cung cấp các giải pháp vay mượn hiện đại, minh bạch và an toàn.
         </p>
@@ -34,9 +37,12 @@ export function About() {
         </div>
 
         <div className="mt-12">
-          <button className="bg-[#33FFCC] border border-orange-400 rounded-full px-8 py-3 text-black font-semibold hover:bg-[#33FFCC]/80 transform transition hover:scale-105 active:scale-95">
+          <button className="bg-[#33FFCC] border border-orange-400 rounded-full px-8 py-3 text-black font-semibold hover:bg-[#33FFCC]/80 transform transition hover:scale-105 active:scale-95"
+          onClick={() => productService.products()}
+          >
             Liên hệ với chúng tôi
           </button>
+          {productService.products()}
         </div>
       </div>
     </div>

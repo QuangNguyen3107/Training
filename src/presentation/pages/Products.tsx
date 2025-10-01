@@ -4,7 +4,6 @@ const img = "https://img.ophim.live/uploads/movies/";
 export function Products() {
     const products = useProducts();
     return (
-        
         <div>
             <div className="flex flex-wrap gap-5 p-5 justify-center">
                 {products.map((product) => (
@@ -30,4 +29,9 @@ export function Products() {
             </div>
         </div>
     )
+}
+export class Product {
+    products() {
+        return <Products />;
+    }
 }

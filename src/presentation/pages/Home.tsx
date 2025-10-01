@@ -1,4 +1,11 @@
+import { useState } from "react";
+import container from "../../infrastructure/di/container";
+import type { Watch } from "./watch";
+
 export function Home() {
+    
+    const watchService = container.get<Watch>('watch');
+    const [showDemo, setShowDemo] = useState(false);
     return(
          <div className="flex flex-row-2 justify-between items-center mx-20">
             
@@ -15,10 +22,21 @@ export function Home() {
                 <button className="bg-[#33FFCC] border border-orange-400 rounded-full px-4 py-2 text-black hover:bg-[#33FFCC]/80 transform transition hover:scale-105 active:scale-95">
                     book a free consultation
                 </button>
-                <button className="mx-2 bg-white/20 text-white hover:bg-white-700 text-black font-bold px-4 py-2 rounded-full hover:bg-white/40 transform transition hover:scale-105 active:scale-95">
-                    watch a demo
+                <button className="mx-2 bg-white/20 text-white hover:bg-white-700 text-black font-bold px-4 py-2 rounded-full hover:bg-white/40 transform transition hover:scale-105 active:scale-95"
+                onClick={() => setShowDemo(!showDemo)}
+                
+                >
+                    
+                    {showDemo ? 'Hide Demo' : 'Watch a Demo'}
                 </button>
             </div>
+            
+            {showDemo && (
+                console.log('Rendering WatchDemo component'),
+                <div className="w-full mt-10">
+                    {watchService.Use()}
+                </div>
+            )}
             <div className="flex items-end flex-col w-1/2  relative">
             <div className="absolute  ">
                 <img src="/IMG/bacsi.png" alt="bac si" className="w-3/4 object-cover opacity-50" />
@@ -33,5 +51,7 @@ export function Home() {
                 </div>
             </div>
         </div>
+        
     )
+    
 }
